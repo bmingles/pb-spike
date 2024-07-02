@@ -1,0 +1,15 @@
+services:
+  pb-kmt:
+    image: pb-kmt
+    build:
+      context: .
+    # TODO: prod config should probably not include --dev flag
+    command: --dev
+    ports:
+      - 3002:8080
+    restart: always
+    env_file:
+      - ./.env.local
+    volumes:
+      - ./pb_data:/pb/pb_data
+      - ./pb_migrations:/pb/pb_migrations
